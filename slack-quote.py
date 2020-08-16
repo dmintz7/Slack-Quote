@@ -25,7 +25,7 @@ def get_quotes(type, number_of_quotes=1):
 def get_random_quote(format=True):
 	while True:
 		try:
-			(topic, quote) = get_quotes(config.choices[random.randint(0, len(popular_choice) - 1)])
+			(topic, quote) = get_quotes(config.choices[random.randint(0, len(config.choices) - 1)])
 		except:
 			continue
 			
@@ -44,7 +44,7 @@ def getSubString(string, firstChar, secondChar, start=1):
 	
 
 if __name__ == "__main__":
-	final_message = "Morning Report\n\nDaily Quote\n\n%s" % get_random_quote()
+	final_message = "Quote\n\n%s" % get_random_quote()
 	
 	sc = SlackClient(config.slack_api)
 	sc.api_call("chat.postMessage", channel=config.slack_channel, text=final_message, as_user=False)
